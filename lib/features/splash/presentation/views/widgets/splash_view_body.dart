@@ -1,4 +1,11 @@
+import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/core/services/firebase_auth_service.dart';
+import 'package:e_commerce/core/services/shared_preferences_singleton.dart';
+import 'package:e_commerce/core/services/user_local_service.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
+import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
+import 'package:e_commerce/features/home/presentation/views/main_view.dart';
+import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -11,7 +18,9 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
-    excuteNavigation(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      excuteNavigation(context);
+    });
     super.initState();
   }
 
@@ -31,9 +40,68 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     );
   }
 
-  void excuteNavigation(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, 'onBoardingView');
-    });
+  void excuteNavigation(BuildContext context) async {
+    bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
+
+    await Future.delayed(const Duration(seconds: 1));
+
+    if (isOnBoardingViewSeen) {
+      final user = await UserLocalService.loadUser();
+      bool isLoggedIn = FirebaseAuthService().isLoggedIn();
+
+      if (user != null && isLoggedIn) {
+        // المستخدم مسجل دخول وعنده بيانات محفوظة
+        Navigator.pushReplacementNamed(context, MainView.routeName);
+      } else {
+        // مش مسجل أو معندوش بيانات
+        Navigator.pushReplacementNamed(context, SigninView.routeName);
+      }
+    } else {
+      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+    }
   }
 }
+
+// void excuteNavigation() {
+//     bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
+//     Future.delayed(const Duration(seconds: 1), () {
+//       if (isOnBoardingViewSeen == true) {
+//         Navigator.pushReplacementNamed(context, SigninView.routeName);
+//       } else {
+//         Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+//       }
+//     });
+//   }
+// }
+
+
+
+
+
+ // void excuteNavigation(BuildContext context) async {
+  //   bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
+  //   await Future.delayed(const Duration(seconds: 1));
+
+  //   if (!isOnBoardingViewSeen) {
+  //     Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+  //     return;
+  //   }
+
+  //   final user = await UserLocalService.loadUser();
+  //   final token = Prefs.getString('token');
+
+  //   if (user != null && token.isNotEmpty) {
+  //     final api = ApiAuthService();
+  //     final isValid = await api.isTokenValid();
+
+  //     if (isValid) {
+  //       Navigator.pushReplacementNamed(context, MainView.routeName);
+  //     } else {
+  //       await Prefs.remove('token');
+  //       await UserLocalService.clearUser();
+  //       Navigator.pushReplacementNamed(context, SigninView.routeName);
+  //     }
+  //   } else {
+  //     Navigator.pushReplacementNamed(context, SigninView.routeName);
+  //   }
+  // }

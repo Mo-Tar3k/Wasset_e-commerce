@@ -1,112 +1,100 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
+import 'package:e_commerce/features/on_boarding/presentation/views/widgets/page_view_item.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPageView extends StatelessWidget {
-  const OnBoardingPageView({super.key});
-
+  const OnBoardingPageView({super.key, required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: PageController(),
-      children: const [
-        OnBoardingPageViewItem(
-          backgroundImage:
-              'assets/images/burger.jpg', // استبدل بالصورة المناسبة
-          title: "We serve incomparable delicacies",
-          description:
-              "All the best restaurants with their top menu waiting for you, they can't wait for your order!!",
-        ),
-      ],
-    );
-  }
-}
-
-class OnBoardingPageViewItem extends StatelessWidget {
-  final String backgroundImage;
-  final String title;
-  final String description;
-
-  const OnBoardingPageViewItem({
-    super.key,
-    required this.backgroundImage,
-    required this.title,
-    required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(child: Image.asset(backgroundImage, fit: BoxFit.cover)),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            margin: const EdgeInsets.only(bottom: 40),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-            decoration: BoxDecoration(
-              color: Colors.orange,
-              borderRadius: BorderRadius.circular(32),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 14, color: Colors.white70),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    3,
-                    (index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      width: index == 0 ? 16 : 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: index == 0 ? Colors.white : Colors.white54,
-                        borderRadius: BorderRadius.circular(4),
+    return Scaffold(
+      body: PageView(
+        controller: pageController,
+        children: [
+          PageViewItem(
+            isVisible: true,
+            imagePath: Assets.assetsImagesOnboarding1,
+            background: Assets.assetsImagesOnboarding1,
+            subtitle:
+                'A Dynamic Multi-Category Platform for Strengthening Connections Between Services and Expanding Opportunities with smart Image Classification for Jop Creation',
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Wa',
+                        style: TextStyle(
+                          color: Color(0xFFF05D3B),
+                          fontSize: 64,
+                          fontFamily: 'Sora',
+                          fontWeight: FontWeight.w700,
+                          height: 1.30,
+                          letterSpacing: -1.28,
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    // قم بتحديد السلوك المطلوب عند الضغط
-                  },
-                  child: Container(
-                    width: 56,
-                    height: 56,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: const Icon(
-                      Icons.arrow_forward,
-                      color: Colors.orange,
-                      size: 28,
-                    ),
+                      TextSpan(
+                        text: 'sset',
+                        style: TextStyle(
+                          color: Color(0xFF374151),
+                          fontSize: 64,
+                          fontFamily: 'Sora',
+                          fontWeight: FontWeight.w700,
+                          height: 1.30,
+                          letterSpacing: -1.28,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+          PageViewItem(
+            isVisible: false,
+
+            imagePath: Assets.assetsImagesOnboarding2,
+            background: Assets.assetsImagesOnboarding1,
+            subtitle:
+                'Discover a world of timeless fashion for the modern People. Shop the latest collections from top designers.',
+            title: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Shopping made ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: Color(0xFF374151),
+                        fontSize: 40,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      'Easy',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: AppColors.primaryColor,
+                        fontSize: 40,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 24),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

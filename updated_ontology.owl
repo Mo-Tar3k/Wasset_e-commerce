@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="C:\Users\Mohamed Tarek\Documents\Semantic Web and Ontology.rdf"
+         xmlns="C:\Users\Mohamed Tarek\Documents\Semantic Web and Ontology.rdf#"
+         xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+         xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+         xmlns:ont.="http://www.co-ode.org/ontologies/ont.owl#">
+
+<owl:Ontology rdf:about="C:\Users\Mohamed Tarek\Documents\Semantic Web and Ontology.rdf"/>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#hasSkill">
+  <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+  <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Skill"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#livesIn">
+  <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+  <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#City"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#locatedIn">
+  <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+  <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#City"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#offersJob">
+  <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+  <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#requiresSkill">
+  <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+  <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Skill"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#suitableFor">
+  <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+  <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+</owl:ObjectProperty>
+
+<owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+
+<owl:Class rdf:about="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+
+<owl:Class rdf:about="http://www.co-ode.org/ontologies/ont.owl#Skill"/>
+
+<owl:Class rdf:about="http://www.co-ode.org/ontologies/ont.owl#City"/>
+
+<owl:Class rdf:about="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+
+<owl:Class rdf:about="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Alexandria">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#City"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Ali">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+  <ont.:hasSkill rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Java"/>
+  <ont.:livesIn rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Cairo"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Java">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Skill"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Cairo">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#City"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Google">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+  <ont.:locatedIn rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Cairo"/>
+  <ont.:offersJob rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JavaDeveloper"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#JavaDeveloper">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+  <ont.:requiresSkill rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Java"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#IBM">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+  <ont.:locatedIn rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Alexandria"/>
+  <ont.:offersJob rdf:resource="http://www.co-ode.org/ontologies/ont.owl#ProjectManager"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#ProjectManager">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+  <ont.:requiresSkill rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Management"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Management">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Skill"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.co-ode.org/ontologies/ont.owl#Sara">
+  <rdf:type rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+  <ont.:hasSkill rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Management"/>
+  <ont.:livesIn rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Alexandria"/>
+  <ont.:hasSkill rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Java"/>
+</owl:NamedIndividual>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/city"/>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/j"/>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/s"/>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Job"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/j"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#requiresSkill"/>
+              <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/j"/>
+              <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/s"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:ClassAtom>
+                  <swrl:classPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+                  <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+                </swrl:ClassAtom>
+              </rdf:first>
+              <rdf:rest>
+                <swrl:AtomList>
+                  <rdf:first>
+                    <swrl:IndividualPropertyAtom>
+                      <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#hasSkill"/>
+                      <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+                      <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/s"/>
+                    </swrl:IndividualPropertyAtom>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </swrl:AtomList>
+              </rdf:rest>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#suitableFor"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/j"/>
+          <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatchBySkill</rdfs:label>
+</swrl:Imp>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#locatedIn"/>
+              <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+              <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/city"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:ClassAtom>
+                  <swrl:classPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#JobSeeker"/>
+                  <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+                </swrl:ClassAtom>
+              </rdf:first>
+              <rdf:rest>
+                <swrl:AtomList>
+                  <rdf:first>
+                    <swrl:IndividualPropertyAtom>
+                      <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#livesIn"/>
+                      <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+                      <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/city"/>
+                    </swrl:IndividualPropertyAtom>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </swrl:AtomList>
+              </rdf:rest>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#suitableFor"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+          <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatchByCity</rdfs:label>
+</swrl:Imp>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Company"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#offersJob"/>
+              <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+              <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/j"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:IndividualPropertyAtom>
+                  <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#suitableFor"/>
+                  <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/j"/>
+                  <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+                </swrl:IndividualPropertyAtom>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="http://www.co-ode.org/ontologies/ont.owl#suitableFor"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/c"/>
+          <swrl:argument2 rdf:resource="http://www.semanticweb.org/mohamedtarek/ontologies/2025/4/untitled-ontology-3/p"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatchByJob</rdfs:label>
+</swrl:Imp>
+
+<owl:Ontology/>
+
+
+</rdf:RDF>

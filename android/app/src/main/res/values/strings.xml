@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">Wasset</string>
+
+<string name="facebook_app_id">453270657779195</string>
+<string name="fb_login_protocol_scheme">fb1234</string>
+<string name="facebook_client_token">0ae35c31ab0e5cba72f84fe7267d4c47</string>
+
+
+</resources>
