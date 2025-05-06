@@ -44,11 +44,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       MaterialPageRoute(
                         builder:
                             (_) => BlocProvider.value(
-                              value:
-                                  context
-                                      .read<
-                                        CartCubit
-                                      >(), // توفير الـ CartCubit هنا
+                              value: context.read<CartCubit>(),
                               child: const SearchView(),
                             ),
                       ),
