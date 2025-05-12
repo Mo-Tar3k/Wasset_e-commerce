@@ -10,6 +10,7 @@ import 'package:e_commerce/features/auth/presentation/cubits/signin_cubit/signin
 import 'package:e_commerce/features/auth/presentation/views/widgets/donthaveanaccountwidget.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/or_divider.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/social_login_button.dart';
+import 'package:e_commerce/features/auth/presentation/views/forget_password_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,13 +55,21 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    'Forgot your password ?',
-                    style: TextStyle(
-                      color: AppColors.lightPrimaryColor,
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w600,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        ForgetPasswordView.routeName,
+                      );
+                    },
+                    child: const Text(
+                      'Forgot your password ?',
+                      style: TextStyle(
+                        color: AppColors.lightPrimaryColor,
+                        fontSize: 14,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],

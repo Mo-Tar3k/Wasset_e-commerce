@@ -1,6 +1,9 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/signup_view.dart';
+import 'package:e_commerce/features/auth/presentation/views/forget_password_view.dart';
+import 'package:e_commerce/features/auth/presentation/views/verify_reset_code_view.dart';
+import 'package:e_commerce/features/auth/presentation/views/reset_password_view.dart';
 import 'package:e_commerce/features/best_selling_products/presentation/views/best_selling_view.dart';
 import 'package:e_commerce/features/checkout/presentation/views/checkout_view.dart';
 import 'package:e_commerce/features/home/models/cart_model.dart';
@@ -55,6 +58,22 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const SignupView());
     case OnBoardingView.routeName:
       return MaterialPageRoute(builder: (_) => const OnBoardingView());
+    case ForgetPasswordView.routeName:
+      return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
+
+    // ✅ التعديل المهم: تمرير arguments
+    case VerifyResetCodeView.routeName:
+      return MaterialPageRoute(
+        builder: (_) => VerifyResetCodeView(),
+        settings: settings, // هنا التعديل المهم
+      );
+
+    case ResetPasswordView.routeName:
+      return MaterialPageRoute(
+        builder: (_) => ResetPasswordView(),
+        settings: settings, // هنا التعديل المهم
+      );
+
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

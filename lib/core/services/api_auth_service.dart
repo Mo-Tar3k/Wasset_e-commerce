@@ -106,4 +106,60 @@ class ApiAuthService {
       return false;
     }
   }
+
+  Future<void> forgotPassword({required String email}) async {
+    try {
+      final response = await _dio.post(
+        'auth/forgot-password',
+        data: {"email": email},
+        options: Options(headers: {'Content-Type': 'application/json'}),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to send reset code: ${response.data}');
+      }
+    } catch (e) {
+      throw Exception('Error in forgotPassword: $e');
+    }
+  }
+
+  Future<Map<String, dynamic>> verifyResetCode({
+    required String email,
+    required String code,
+  }) async {
+    try {
+      final response = await _dio.post(
+        'auth/verify-reset-code',
+        data: {"email": email, "code": code},
+        options: Options(headers: {'Content-Type': 'application/json'}),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to verify reset code: ${response.data}');
+      }
+      return response.data;
+    } catch (e) {
+      throw Exception('Error in verifyResetCode: $e');
+    }
+  }
+
+  Future<void> resetPassword({
+    required String email,
+    required String token,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await _dio.post(
+        'auth/reset-password',
+        data: {"email": email, "Token": token, "newpassword": newPassword},
+        options: Options(headers: {'Content-Type': 'application/json'}),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to reset password: ${response.data}');
+      }
+    } catch (e) {
+      throw Exception('Error in resetPassword: $e');
+    }
+  }
 }
