@@ -107,7 +107,14 @@ class _SortOptionsBottomSheetState extends State<SortOptionsBottomSheet> {
               backgroundColor: AppColors.primaryColor,
               minimumSize: const Size(double.infinity, 48),
             ),
-            child: const Text("Filter"),
+            child: const Text(
+              "Filter",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
