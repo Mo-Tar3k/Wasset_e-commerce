@@ -1,7 +1,10 @@
 import 'dart:io';
+import 'dart:async';
 import 'package:e_commerce/core/helper_funcations/show_error_bar.dart';
 import 'package:e_commerce/core/services/api_profile_service.dart';
+import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/auth/data/model/user_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'profile_text_field.dart';
@@ -29,23 +32,33 @@ class _EditProfileFormState extends State<EditProfileForm> {
 
   Future<void> pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image != null) {
+    if (image != null && mounted) {
       setState(() => selectedImage = File(image.path));
     }
   }
 
+  Future<bool> _updateUserProfileInBackground(
+    Map<String, dynamic> params,
+  ) async {
+    return await ProfileService.updateUserProfile(
+      displayName: params['displayName'],
+      bio: params['bio'],
+      profileImage: params['profileImage'],
+    );
+  }
+
   Future<void> updateProfile() async {
+    if (!mounted) return; // Ensure widget is still mounted
     setState(() => isLoading = true);
 
-    final success = await ProfileService.updateUserProfile(
-      displayName: nameCtrl.text.trim(),
-      bio: bioCtrl.text.trim(),
-      profileImage: selectedImage,
-    );
+    final success = await compute(_updateUserProfileInBackground, {
+      'displayName': nameCtrl.text.trim(),
+      'bio': bioCtrl.text.trim(),
+      'profileImage': selectedImage,
+    });
 
+    if (!mounted) return; // Ensure widget is still mounted
     setState(() => isLoading = false);
-
-    if (!mounted) return;
 
     showMassgeBar(context, success ? '✅ Profile updated' : '❌ Failed');
 
@@ -108,20 +121,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               ? const CircularProgressIndicator()
               : SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: updateProfile,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepOrange,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: const Text(
-                    'Save',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                ),
+                child: CustomButton(onPressed: updateProfile, text: 'Save'),
               ),
         ],
       ),
