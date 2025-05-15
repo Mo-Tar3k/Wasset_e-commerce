@@ -5,19 +5,21 @@ This project aims to demonstrate building beautiful and functional UIs with Flut
 
 ---
 
+
 ## 🚀 Features
 
-- 🛍️ Product listing
-- 📄 Product details
-- ➕ Add to cart
-- 🧺 Shopping cart
-- 🎨 Clean and modern UI using Flutter
+- 🛍️ **Product listing**
+- 🧾 **Product details**
+- ➕ **Add to cart**
+- 🛒 **Shopping cart**
+- ❤️ **Favorites (coming soon)**
+- 🎨 **Clean and modern UI using Flutter**
 
 ---
 
 ## 📷 Screenshots
 
-(/screenshots/)
+(/screens/)
 
 ---
 
@@ -32,6 +34,28 @@ flutter pub get
 flutter run
 
 
+📦 Packages Used
+Dio – For API requests
+
+provider – State management
+
+Firebase - Database and authentication
+
+Supabase - Image Storge and Data Storge
+
+
+🚧 Roadmap
+ Product listing
+
+ Product details screen
+
+ Add to cart
+
+ User login & authentication
+
+ Payment integration (coming soon)
+
+
 📚 Useful Resources
 Lab: Write your first Flutter app
 
@@ -43,4 +67,10 @@ Flutter Documentation
 ✨ Contributions
 Contributions are welcome to enhance the app or add new features!
 Please open an Issue or a Pull Request.
+
+
+📬 Contact
+For suggestions or questions:
+📧 mohamed.tarek.say3d@gmail.com
+🔗 LinkedIn https://www.linkedin.com/in/mohammed--tarek
 
