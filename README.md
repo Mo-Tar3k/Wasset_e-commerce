@@ -1,16 +1,46 @@
-# e_commerce
+# 📦 e_commerce
 
-A new Flutter project.
+A simple e-commerce Flutter application.  
+This project aims to demonstrate building beautiful and functional UIs with Flutter.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🛍️ Product listing
+- 📄 Product details
+- ➕ Add to cart
+- 🧺 Shopping cart
+- 🎨 Clean and modern UI using Flutter
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📷 Screenshots
+
+(/screenshots/)
+
+---
+
+## 🛠️ Getting Started
+
+To run this project locally:
+
+```bash
+git clone https://github.com/Mo-Tar3k/Wasset_e-commerce
+cd e_commerce
+flutter pub get
+flutter run
+
+
+📚 Useful Resources
+Lab: Write your first Flutter app
+
+Cookbook: Useful Flutter samples
+
+Flutter Documentation
+
+
+✨ Contributions
+Contributions are welcome to enhance the app or add new features!
+Please open an Issue or a Pull Request.
+
