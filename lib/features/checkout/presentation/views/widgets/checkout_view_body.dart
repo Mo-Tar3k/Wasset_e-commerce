@@ -100,7 +100,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       case 1:
         return 'Next';
       case 2:
-        return 'Pay with PayPal';
+        return 'Pay with Stripe';
       default:
         return 'Next';
     }
