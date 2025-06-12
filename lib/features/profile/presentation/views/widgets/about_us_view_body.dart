@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/core/widgets/build_app_bar.dart';
@@ -12,9 +13,9 @@ class AboutUsViewBody extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFFDEFEF), Color(0xFFFFFFFF)],
+            colors: [AppColors.white(context), AppColors.white(context)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -41,7 +42,7 @@ class AboutUsViewBody extends StatelessWidget {
                 'Welcome to Our Platform',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: AppColors.blac(context),
                 ),
               ),
               const SizedBox(height: 24),
@@ -50,17 +51,17 @@ class AboutUsViewBody extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.9),
+                  color: AppColors.lightDarkMode,
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black12.withOpacity(0.15),
+                      color: AppColors.blac(context),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-                child: const Text(
+                child: Text(
                   '''
 We simplify and enhance the connection between customers and service providers by offering an accessible, reliable, and versatile platform.
 
@@ -70,7 +71,7 @@ We aim to support small businesses and freelancers, enabling them to thrive onli
                     fontSize: 15.5,
                     height: 1.7,
                     fontFamily: 'Cairo',
-                    color: Colors.black87,
+                    color: AppColors.blac(context),
                   ),
                   textAlign: TextAlign.justify,
                 ),

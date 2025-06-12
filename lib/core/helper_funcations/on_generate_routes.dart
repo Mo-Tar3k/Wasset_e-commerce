@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
+import 'package:e_commerce/features/add_products/add_product/presentation/views/add_product_dashboard_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/signup_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/forget_password_view.dart';
@@ -60,6 +61,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const OnBoardingView());
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
+    case AddProductDashboardView.routeName:
+      return MaterialPageRoute(builder: (_) => const AddProductDashboardView());
 
     // ✅ التعديل المهم: تمرير arguments
     case VerifyResetCodeView.routeName:

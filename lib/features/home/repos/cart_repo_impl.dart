@@ -48,4 +48,14 @@ class CartRepoImpl implements CartRepo {
       options: Options(headers: {'Authorization': 'Bearer $token'}),
     );
   }
+
+  @override
+  Future<String> getBasketId() async {
+    final token = Prefs.getString('token');
+    final response = await dio.get(
+      '${kBaseUrl}Cart/basket/id',
+      options: Options(headers: {'Authorization': 'Bearer $token'}),
+    );
+    return response.data as String;
+  }
 }

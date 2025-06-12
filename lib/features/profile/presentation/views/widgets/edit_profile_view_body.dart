@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/features/auth/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/core/services/user_local_service.dart';
@@ -14,9 +15,9 @@ class EditProfileViewBody extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.transparent,
         body: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFFDEFEF), Color(0xFFFFFFFF)],
+              colors: [AppColors.white(context), AppColors.white(context)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),

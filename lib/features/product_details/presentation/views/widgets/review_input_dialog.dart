@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/services/api_service.dart';
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -42,10 +43,10 @@ class _ReviewInputDialogContentState extends State<ReviewInputDialogContent> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            const Text(
+            Text(
               'What is your rate?',
               style: TextStyle(
-                color: Color(0xFF222222),
+                color: AppColors.blac(context),
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -65,11 +66,11 @@ class _ReviewInputDialogContentState extends State<ReviewInputDialogContent> {
               }),
             ),
             const SizedBox(height: 12),
-            const Text(
+            Text(
               'Please share your opinion\nabout the product',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFF222222),
+                color: AppColors.blac(context),
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
@@ -81,7 +82,7 @@ class _ReviewInputDialogContentState extends State<ReviewInputDialogContent> {
               decoration: InputDecoration(
                 hintText: 'Your review',
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: AppColors.white(context),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(color: Colors.grey.shade300),

@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/widgets/build_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -57,9 +58,9 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
         showNotification: false,
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFFDEFEF), Color(0xFFFFFFFF)],
+            colors: [AppColors.white(context), AppColors.white(context)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

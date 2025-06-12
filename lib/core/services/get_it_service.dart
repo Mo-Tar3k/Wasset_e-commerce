@@ -5,6 +5,11 @@ import 'package:e_commerce/core/repos/products_repo/products_repo_impl.dart';
 import 'package:e_commerce/core/services/api_service.dart';
 import 'package:e_commerce/core/services/data_service.dart';
 import 'package:e_commerce/core/services/api_auth_service.dart';
+import 'package:e_commerce/features/add_products/core/repos/images_repo/images_dashboard_repo.dart';
+import 'package:e_commerce/features/add_products/core/repos/images_repo/images_dashboard_repo_impl.dart';
+import 'package:e_commerce/features/add_products/core/repos/product_repo/products_dashboard_repo.dart';
+import 'package:e_commerce/features/add_products/core/repos/product_repo/products_dashboard_repo_impl.dart';
+import 'package:e_commerce/features/add_products/core/services/api_service_dashboard.dart';
 import 'package:e_commerce/features/auth/data/domain/repos/auth_repo.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:e_commerce/features/home/repos/categories_repo.dart';
@@ -30,4 +35,19 @@ void setupGetIt() {
   getIt.registerSingleton<CategoriesRepo>(
     CategoriesRepoImpl(databaseService: getIt()),
   );
+  getIt.registerSingleton<ApiServiceDashboard>(ApiServiceDashboard());
+  // Log to check ApiService registration
+  print('ApiService registered: ${getIt<ApiServiceDashboard>()}');
+
+  getIt.registerSingleton<ProductsRepoDashboard>(
+    ProductsRepoImplDashboard(getIt<ApiServiceDashboard>()),
+  );
+  // Log to check ProductsRepoImpl registration
+  print('ProductsRepo registered: ${getIt<ProductsRepoDashboard>()}');
+
+  getIt.registerSingleton<ImagesRepoDashboard>(
+    ImagesRepoImplDashboard(getIt<ApiServiceDashboard>()),
+  );
+  // Log to check ImagesRepoImpl registration
+  print('ImagesRepo registered: ${getIt<ImagesRepoDashboard>()}');
 }

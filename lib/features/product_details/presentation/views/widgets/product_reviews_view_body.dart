@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/services/api_service.dart';
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/features/product_details/presentation/views/widgets/review_input_dialog.dart';
 import 'package:e_commerce/features/product_details/presentation/views/widgets/review_list.dart';
 import 'package:flutter/material.dart';
@@ -174,7 +175,7 @@ void showReviewInputBottomSheet(
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Material(
-            color: Colors.white,
+            color: AppColors.white(context),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
             child: Padding(
               padding: EdgeInsets.only(
@@ -183,10 +184,12 @@ void showReviewInputBottomSheet(
                 right: 24,
                 top: 24,
               ),
-              child: ReviewInputDialogContent(
-                productId: productId,
-                onSubmitted: onSubmitted,
-                validateRating: validateRating,
+              child: Container(
+                child: ReviewInputDialogContent(
+                  productId: productId,
+                  onSubmitted: onSubmitted,
+                  validateRating: validateRating,
+                ),
               ),
             ),
           ),

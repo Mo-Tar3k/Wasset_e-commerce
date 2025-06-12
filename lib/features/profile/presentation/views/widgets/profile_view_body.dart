@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/services/get_it_service.dart';
 import 'package:e_commerce/core/services/user_local_service.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
+import 'package:e_commerce/features/add_products/add_product/presentation/views/add_product_dashboard_view.dart';
 import 'package:e_commerce/features/auth/data/domain/repos/auth_repo.dart';
 import 'package:e_commerce/features/auth/data/model/user_model.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
@@ -62,6 +63,19 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                         }
                       },
                     },
+
+                    if (_user?.role == 'serviceProvider')
+                      {
+                        'icon': Icons.add_business_outlined,
+                        'label': 'Add Products',
+                        'onTap': () {
+                          Navigator.pushNamed(
+                            context,
+                            AddProductDashboardView.routeName,
+                          );
+                        },
+                      },
+
                     const {'icon': Icons.shopping_bag, 'label': 'Orders'},
                     const {'icon': Icons.settings, 'label': 'Mode'},
                   ],
