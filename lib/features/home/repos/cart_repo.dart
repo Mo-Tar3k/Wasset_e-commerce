@@ -6,4 +6,5 @@ abstract class CartRepo {
   Future<void> deleteCartItem(int id);
   Future<void> updateQuantity(CartModel item); // ✅ أضف هذا السطر
   Future<String> getBasketId();
+  Future<void> clearCart();
 }

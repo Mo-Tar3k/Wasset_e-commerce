@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class ApiService {
   final Dio _dio = Dio();
   final String _baseUrl =
-      "https://89db-102-189-85-35.ngrok-free.app"; // تأكد من صحة الـ URL
+      "https://191f-105-197-53-230.ngrok-free.app"; // تأكد من صحة الـ URL
 
   Future<Map<String, dynamic>> startConversation() async {
     try {

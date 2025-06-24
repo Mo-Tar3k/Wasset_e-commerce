@@ -10,6 +10,8 @@ const kSupabaseKey =
 const kSupabaseBucket = 'wasset_images';
 const kBaseUrl =
     'http://waseet.runasp.net/api/'; // Replace with your actual base URL
+const kStripe =
+    'pk_test_51RFk3eLZYn6WqnTpq6DDHzTASPcudgYCIFU3Xljm1Q8sjTCvBeavPM7nBjMBmLktqD6fHavN4oCqiYggBzLqmrXd00EoBUIYVH';
 bool isDarkMode(BuildContext context) {
   return Theme.of(context).brightness == Brightness.dark;
 }

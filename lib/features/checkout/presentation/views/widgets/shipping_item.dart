@@ -48,46 +48,54 @@ class ShippingItem extends StatelessWidget {
                   ? const ActiveShippingItemDot()
                   : const InActiveShippingItemDot(),
               const SizedBox(width: 18),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: AppColors.blac(context),
-                      fontSize: 15,
-                      fontFamily: 'Cairo',
-                      fontWeight: FontWeight.w600,
-                      height: 1.70,
-                    ),
-                  ),
 
-                  const SizedBox(height: 2),
-
-                  Text(
-                    subtitle,
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: AppColors.blac(context),
-                      fontSize: 13,
-                      fontFamily: 'Cairo',
-                      fontWeight: FontWeight.w400,
-                      height: 1.60,
+              /// Expanded علشان ياخد المساحة كلها اللي فاضلة قبل السعر
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: AppColors.blac(context),
+                        fontSize: 15,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w600,
+                        height: 1.70,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: AppColors.blac(context),
+                        fontSize: 13,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w400,
+                        height: 1.60,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const Spacer(),
+
+              const SizedBox(width: 8),
+
+              /// السعر: حطيناه في Container بحجم مناسب
               Center(
                 child: Text(
-                  '$price L.E',
+                  price,
                   style: TextStyle(
                     color:
                         isSelected
                             ? AppColors.primaryColor
                             : isDarkMode(context)
                             ? AppColors.lightMode
-                            : Colors.black.withValues(alpha: 128),
+                            : Colors.black.withAlpha(128),
                     fontSize: 16,
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.w700,

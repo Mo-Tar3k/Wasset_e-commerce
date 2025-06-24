@@ -13,7 +13,7 @@ class HaveAnAccountWidget extends StatelessWidget {
           TextSpan(
             text: "Have an account?",
             style: TextStyle(
-              color: AppColors.secondaryColor,
+              color: AppColors.blac(context),
               fontSize: 16,
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w600,

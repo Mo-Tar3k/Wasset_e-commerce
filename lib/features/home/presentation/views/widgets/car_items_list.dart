@@ -1,6 +1,7 @@
-import 'package:e_commerce/features/home/models/cart_model.dart';
-import 'package:e_commerce/features/home/presentation/views/widgets/cart_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:e_commerce/features/home/models/cart_model.dart';
+import 'cart_item.dart';
 
 class CarItemsList extends StatelessWidget {
   final List<CartModel> cartItems;
@@ -9,15 +10,13 @@ class CarItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.separated(
-      itemCount: cartItems.length,
-      itemBuilder: (context, index) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: CartItem(cartItem: cartItems[index]), // تأكد إن CartItem معدل
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          child: CartItem(cartItem: cartItems[index]),
         );
-      },
-      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      }, childCount: cartItems.length),
     );
   }
 }

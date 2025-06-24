@@ -51,7 +51,7 @@ class AboutUsViewBody extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: AppColors.lightDarkMode,
+                  color: AppColors.gray(context),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(

@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:e_commerce/core/services/api_order.dart';
 import 'package:e_commerce/core/services/get_it_service.dart';
 import 'package:e_commerce/core/services/user_local_service.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
@@ -5,12 +7,17 @@ import 'package:e_commerce/features/add_products/add_product/presentation/views/
 import 'package:e_commerce/features/auth/data/domain/repos/auth_repo.dart';
 import 'package:e_commerce/features/auth/data/model/user_model.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
+import 'package:e_commerce/features/profile/data/repo/order_repository_impl.dart';
+import 'package:e_commerce/features/profile/domain/get_orders_usecase.dart';
 import 'package:e_commerce/features/profile/presentation/views/about_us_view.dart';
+import 'package:e_commerce/features/profile/presentation/views/cubits/orders_cubit.dart';
 import 'package:e_commerce/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/contact_us_view.dart';
+import 'package:e_commerce/features/profile/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/widgets/profile_header.dart';
 import 'package:e_commerce/features/profile/presentation/views/widgets/profile_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileViewBody extends StatefulWidget {
   const ProfileViewBody({super.key});
@@ -76,7 +83,29 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                         },
                       },
 
-                    const {'icon': Icons.shopping_bag, 'label': 'Orders'},
+                    {
+                      'icon': Icons.shopping_bag,
+                      'label': 'Orders',
+                      'onTap': () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (_) => BlocProvider(
+                                  create:
+                                      (_) => OrdersCubit(
+                                        GetOrdersUseCase(
+                                          OrderRepositoryImpl(
+                                            OrderRemoteDataSource(Dio()),
+                                          ),
+                                        ),
+                                      ),
+                                  child: const OrdersView(),
+                                ),
+                          ),
+                        );
+                      },
+                    },
                     const {'icon': Icons.settings, 'label': 'Mode'},
                   ],
                 ),

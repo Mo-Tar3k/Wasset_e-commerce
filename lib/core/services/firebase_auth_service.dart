@@ -154,7 +154,7 @@ class FirebaseAuthService {
     )).user!;
   }
 
-  bool isLoggedIn() => FirebaseAuth.instance.currentUser != null;
+  // bool isLoggedIn() => FirebaseAuth.instance.currentUser != null;
 
   //  Future<User> signInWithApple() async {
   //   // Trigger the sign-in flow

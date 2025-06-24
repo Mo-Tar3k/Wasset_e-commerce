@@ -8,8 +8,11 @@ class CartInitial extends CartState {}
 class CartLoading extends CartState {}
 
 class CartLoaded extends CartState {
-  final List<CartModel> items;
-  CartLoaded(this.items);
+  final List<CartModel> cartItems;
+
+  CartLoaded(this.cartItems);
+
+  List<Object> get props => [cartItems]; // لو بتستخدم Equatable
 }
 
 class CartError extends CartState {

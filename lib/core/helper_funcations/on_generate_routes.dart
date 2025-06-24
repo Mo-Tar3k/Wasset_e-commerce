@@ -8,11 +8,13 @@ import 'package:e_commerce/features/auth/presentation/views/reset_password_view.
 import 'package:e_commerce/features/best_selling_products/presentation/views/best_selling_view.dart';
 import 'package:e_commerce/features/checkout/presentation/views/checkout_view.dart';
 import 'package:e_commerce/features/home/models/cart_model.dart';
+import 'package:e_commerce/features/payment/presentation/views/payment_success_view.dart';
 import 'package:e_commerce/features/product_details/presentation/views/product_details_view.dart';
 import 'package:e_commerce/features/product_details/presentation/views/product_reviews_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/about_us_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:e_commerce/features/profile/presentation/views/contact_us_view.dart';
+import 'package:e_commerce/features/profile/presentation/views/orders_view.dart';
 import 'package:e_commerce/features/search/presentation/views/search_view.dart';
 import 'package:e_commerce/features/home/presentation/views/main_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_view.dart';
@@ -63,6 +65,13 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
     case AddProductDashboardView.routeName:
       return MaterialPageRoute(builder: (_) => const AddProductDashboardView());
+    case OrdersView.routeName:
+      return MaterialPageRoute(builder: (_) => OrdersView());
+    case PaymentSuccessView.routeName:
+      final orderId = settings.arguments as String;
+      return MaterialPageRoute(
+        builder: (_) => PaymentSuccessView(orderId: orderId),
+      );
 
     // ✅ التعديل المهم: تمرير arguments
     case VerifyResetCodeView.routeName:

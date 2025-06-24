@@ -37,86 +37,96 @@ class _SortOptionsBottomSheetState extends State<SortOptionsBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Container(
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                color: Colors.grey[400],
-                borderRadius: BorderRadius.circular(2),
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.white(context),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+      ),
+      constraints: const BoxConstraints(maxHeight: 400),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            "Sort By :",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          RadioListTile<String>(
-            title: const Text("Price (Low To High)"),
-            value: "asc",
-            groupValue: selectedOption,
-            onChanged: (val) {
-              setState(() => selectedOption = val);
-            },
-          ),
-          RadioListTile<String>(
-            title: const Text("Price (High To Low)"),
-            value: "desc",
-            groupValue: selectedOption,
-            onChanged: (val) {
-              setState(() => selectedOption = val);
-            },
-          ),
-          RadioListTile<String>(
-            title: const Text("Latest"),
-            value: "latest",
-            groupValue: selectedOption,
-            onChanged: (val) {
-              setState(() => selectedOption = val);
-            },
-          ),
-          const SizedBox(height: 8),
-          ElevatedButton(
-            onPressed: () {
-              final cubit = widget.parentContext.read<SearchCubit>();
-
-              switch (selectedOption) {
-                case "asc":
-                  cubit.applySortOption(SortOption.priceAsc);
-                  break;
-                case "desc":
-                  cubit.applySortOption(SortOption.priceDesc);
-                  break;
-                case "latest":
-                  cubit.applySortOption(SortOption.latest);
-                  break;
-                default:
-                  cubit.applySortOption(SortOption.none);
-              }
-
-              Navigator.pop(context);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
-              minimumSize: const Size(double.infinity, 48),
+            const SizedBox(height: 16),
+            const Text(
+              "Sort By :",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            child: const Text(
-              "Filter",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+            RadioListTile<String>(
+              title: const Text("Price (Low To High)"),
+              value: "asc",
+              groupValue: selectedOption,
+              onChanged: (val) {
+                setState(() => selectedOption = val);
+              },
+            ),
+            RadioListTile<String>(
+              title: const Text("Price (High To Low)"),
+              value: "desc",
+              groupValue: selectedOption,
+              onChanged: (val) {
+                setState(() => selectedOption = val);
+              },
+            ),
+            RadioListTile<String>(
+              title: const Text("Latest"),
+              value: "latest",
+              groupValue: selectedOption,
+              onChanged: (val) {
+                setState(() => selectedOption = val);
+              },
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                final cubit = widget.parentContext.read<SearchCubit>();
+
+                switch (selectedOption) {
+                  case "asc":
+                    cubit.applySortOption(SortOption.priceAsc);
+                    break;
+                  case "desc":
+                    cubit.applySortOption(SortOption.priceDesc);
+                    break;
+                  case "latest":
+                    cubit.applySortOption(SortOption.latest);
+                    break;
+                  default:
+                    cubit.applySortOption(SortOption.none);
+                }
+
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+                minimumSize: const Size(double.infinity, 48),
+              ),
+              child: const Text(
+                "Filter",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

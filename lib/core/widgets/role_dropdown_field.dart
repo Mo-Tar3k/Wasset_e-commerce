@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class RoleDropdownField extends StatefulWidget {
@@ -23,15 +24,8 @@ class _RoleDropdownFieldState extends State<RoleDropdownField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(4),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.4),
-            blurRadius: 8,
-            offset: const Offset(0, 1),
-          ),
-        ],
+        boxShadow: [],
       ),
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
@@ -41,7 +35,7 @@ class _RoleDropdownFieldState extends State<RoleDropdownField> {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: AppColors.gray(context),
         ),
         value: _selectedRole,
         items: const [

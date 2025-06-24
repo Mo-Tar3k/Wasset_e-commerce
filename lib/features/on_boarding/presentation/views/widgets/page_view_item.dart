@@ -48,13 +48,15 @@ class PageViewItem extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Visibility(
                     visible: isVisible,
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                        decoration: TextDecoration.none,
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundColor: AppColors.primaryColor,
+                        child: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

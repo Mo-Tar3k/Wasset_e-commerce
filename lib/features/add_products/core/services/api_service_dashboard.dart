@@ -32,7 +32,7 @@ class ApiServiceDashboard {
       });
 
       final response = await _dio.post(
-        'https://89e2-102-189-85-35.ngrok-free.app/predict',
+        'https://6a6f-105-197-53-230.ngrok-free.app/predict',
         data: formData,
         options: Options(headers: {'Content-Type': 'multipart/form-data'}),
       );

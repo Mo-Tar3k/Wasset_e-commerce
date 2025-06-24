@@ -1,5 +1,4 @@
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/core/services/firebase_auth_service.dart';
 import 'package:e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:e_commerce/core/services/user_local_service.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
@@ -47,14 +46,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     if (isOnBoardingViewSeen) {
       final user = await UserLocalService.loadUser();
-      bool isLoggedIn = FirebaseAuthService().isLoggedIn();
+      // bool isLoggedIn = FirebaseAuthService().isLoggedIn();
 
-      if (user != null && isLoggedIn) {
+      // if (user != null && isLoggedIn) {
+      if (user != null) {
         // المستخدم مسجل دخول وعنده بيانات محفوظة
         Navigator.pushReplacementNamed(context, MainView.routeName);
       } else {
         // مش مسجل أو معندوش بيانات
-        Navigator.pushReplacementNamed(context, SigninView.routeName);
+        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
       }
     } else {
       Navigator.pushReplacementNamed(context, OnBoardingView.routeName);

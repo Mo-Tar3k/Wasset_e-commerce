@@ -4,7 +4,6 @@ import 'package:e_commerce/core/helper_funcations/show_error_bar.dart';
 import 'package:e_commerce/core/services/api_profile_service.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/auth/data/model/user_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'profile_text_field.dart';
@@ -51,7 +50,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
     if (!mounted) return; // Ensure widget is still mounted
     setState(() => isLoading = true);
 
-    final success = await compute(_updateUserProfileInBackground, {
+    final success = await _updateUserProfileInBackground({
       'displayName': nameCtrl.text.trim(),
       'bio': bioCtrl.text.trim(),
       'profileImage': selectedImage,

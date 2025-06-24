@@ -14,12 +14,33 @@ class CartCubit extends Cubit<CartState> {
 
   double get total => cartItems.fold(0, (sum, item) => sum + item.total);
 
+  // Future<void> loadCart() async {
+  //   emit(CartLoading());
+  //   print("🧠 CartCubit - loading cart items..."); // ⬅️ هنا
+
+  //   try {
+  //     cartItems = await _repo.getCartItems() ?? []; // تأكد أنها مش null
+  //     emit(CartLoaded(cartItems));
+  //   } catch (e) {
+  //     emit(CartError('Failed to load cart'));
+  //   }
+  // }
   Future<void> loadCart() async {
     emit(CartLoading());
+    print("🧠 CartCubit - loading cart items...");
+
     try {
       cartItems = await _repo.getCartItems();
+
+      // ✅ طبع محتوى السلة
+      print("📦 CartCubit - loaded ${cartItems.length} items:");
+      for (var item in cartItems) {
+        print("🔸 ${item.name} x${item.quantity}");
+      }
+
       emit(CartLoaded(cartItems));
     } catch (e) {
+      print("❌ CartCubit - failed to load cart: $e");
       emit(CartError('Failed to load cart'));
     }
   }
@@ -69,5 +90,16 @@ class CartCubit extends Cubit<CartState> {
       quantity: 1,
     );
     addToCart(cartItem);
+  }
+
+  Future<void> clearCart() async {
+    emit(CartLoading());
+    try {
+      await _repo.clearCart(); // 🟢 دي تمسح من الـ API
+      cartItems.clear(); // 🟢 دي تمسح من الذاكرة المحلية
+      emit(CartLoaded([])); // 🟢 تبعت للمستمعين إن الكارت فاضي
+    } catch (e) {
+      emit(CartError('Failed to clear cart'));
+    }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:e_commerce/features/checkout/domain/entites/order_entity.dart';
-import 'package:e_commerce/features/checkout/presentation/views/data/models/order_product_model.dart';
-import 'package:e_commerce/features/checkout/presentation/views/data/models/shipping_address_model.dart';
+import 'package:e_commerce/features/checkout/data/models/order_product_model.dart';
+import 'package:e_commerce/features/checkout/data/models/shipping_address_model.dart';
 
 class OrderModel {
   final double totalPrice;
@@ -8,6 +8,7 @@ class OrderModel {
   final ShippingAddressModel shippingAddressModel;
   final List<OrderProductModel> orderProducts;
   final String paymentMethod;
+  final int? deliveryMethodId;
 
   OrderModel({
     required this.totalPrice,
@@ -15,6 +16,7 @@ class OrderModel {
     required this.shippingAddressModel,
     required this.orderProducts,
     required this.paymentMethod,
+    required this.deliveryMethodId,
   });
 
   factory OrderModel.fromEntity(OrderEntity orderEntity) {
@@ -26,9 +28,10 @@ class OrderModel {
       ),
       orderProducts:
           orderEntity.cartItems
-              .map((cartItem) => OrderProductModel.fromCartModel(cartItem))
+              .map((e) => OrderProductModel.fromCartModel(e))
               .toList(),
-      paymentMethod: orderEntity.payWithCash! ? 'Cash' : 'Paypal',
+      paymentMethod: orderEntity.payWithCash! ? 'Cash' : 'Stripe',
+      deliveryMethodId: orderEntity.deliveryMethodId,
     );
   }
 
@@ -38,5 +41,6 @@ class OrderModel {
     'shippingAddressModel': shippingAddressModel.toJson(),
     'orderProducts': orderProducts.map((e) => e.toJson()).toList(),
     'paymentMethod': paymentMethod,
+    'deliveryMethodId': deliveryMethodId,
   };
 }

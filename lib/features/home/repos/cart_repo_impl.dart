@@ -14,6 +14,11 @@ class CartRepoImpl implements CartRepo {
       '${kBaseUrl}Cart/basket',
       options: Options(headers: {'Authorization': 'Bearer $token'}),
     );
+
+    print(
+      "📡 [getCartItems] response: ${response.data}",
+    ); // ✅ طباعة JSON الأصلي
+
     final data = response.data as List;
     return data.map((e) => CartModel.fromJson(e)).toList();
   }
@@ -57,5 +62,14 @@ class CartRepoImpl implements CartRepo {
       options: Options(headers: {'Authorization': 'Bearer $token'}),
     );
     return response.data as String;
+  }
+
+  @override
+  Future<void> clearCart() async {
+    final token = Prefs.getString('token');
+    await dio.delete(
+      '${kBaseUrl}Cart/basket',
+      options: Options(headers: {'Authorization': 'Bearer $token'}),
+    );
   }
 }

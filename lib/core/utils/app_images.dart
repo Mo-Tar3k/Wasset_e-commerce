@@ -138,6 +138,10 @@ class Assets {
   /// assets/images/sort_by.png
   static const String assetsImagesSortBy = "assets/images/sort_by.png";
 
+  /// Assets for assetsImagesSucssesPay
+  /// assets/images/sucsses_pay.png
+  static const String assetsImagesSucssesPay = "assets/images/sucsses_pay.png";
+
   /// Assets for assetsImagesTrash
   /// assets/images/trash.png
   static const String assetsImagesTrash = "assets/images/trash.png";

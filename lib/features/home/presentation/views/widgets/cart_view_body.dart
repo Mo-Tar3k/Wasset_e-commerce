@@ -13,40 +13,75 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartItems = context.watch<CartCubit>().cartItems;
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, state) {
+        if (state is CartLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is CartLoaded) {
+          final cartItems = state.cartItems;
 
-    return Stack(
-      children: [
-        CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  SizedBox(height: KTopPadding),
-                  buildAppBar(
-                    context,
-                    title: 'Cart',
-                    showNotification: false,
-                    showBackButton: false,
+          // ✅ اطبع عدد أو محتوى المنتجات علشان تتأكد
+          print("🧾 UI - rendering cartItems: ${cartItems.length} items");
+          for (var item in cartItems) {
+            print("🔸 ${item.name} x${item.quantity}"); // أو أي خاصية تهمك
+          }
+
+          return Stack(
+            children: [
+              CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        SizedBox(height: KTopPadding),
+                        buildAppBar(
+                          context,
+                          title: 'Cart',
+                          showNotification: false,
+                          showBackButton: false,
+                        ),
+                        SizedBox(height: 24),
+                        CartHeader(),
+                        SizedBox(height: 8),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 24),
-                  CartHeader(),
-                  SizedBox(height: 8),
+                  if (cartItems.isNotEmpty) ...[
+                    const SliverToBoxAdapter(child: CustomDivider()),
+                    CarItemsList(cartItems: cartItems),
+                  ] else ...[
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Column(
+                          children: [
+                            Icon(Icons.shopping_cart), // مثال
+                            const SizedBox(height: 16),
+                            Text(
+                              "Your cart is empty",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               ),
-            ),
-            if (cartItems.isNotEmpty)
-              const SliverToBoxAdapter(child: CustomDivider()),
-            CarItemsList(cartItems: cartItems),
-          ],
-        ),
-        Positioned(
-          right: 0,
-          left: 0,
-          bottom: MediaQuery.sizeOf(context).height * 0.04,
-          child: const CustomCartButton(),
-        ),
-      ],
+              Positioned(
+                right: 0,
+                left: 0,
+                bottom: MediaQuery.sizeOf(context).height * 0.04,
+                child: const CustomCartButton(),
+              ),
+            ],
+          );
+        } else if (state is CartError) {
+          return Center(child: Text('Error loading cart'));
+        } else {
+          return const SizedBox.shrink(); // For CartInitial or unknown state
+        }
+      },
     );
   }
 }
